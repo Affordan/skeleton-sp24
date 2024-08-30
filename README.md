@@ -86,3 +86,10 @@ The amazing process like this **Watch the arrow carefully**
 - 2 sentinel
 - doubly node (with great constructor)
 - `new LNode(sentFront, x, sentFront.next);`
+
+# project
+
+## pro0
+
+The idea of moving one single tile and then a column then the whole board is great. And the most powerful idea is using `setViewingPerspective` method to control.Show my game.
+![](./imgs/game2048.gif)
