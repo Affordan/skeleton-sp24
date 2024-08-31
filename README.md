@@ -87,6 +87,35 @@ The amazing process like this **Watch the arrow carefully**
 - doubly node (with great constructor)
 - `new LNode(sentFront, x, sentFront.next);`
 
+## lec8 inheritance and implementation
+
+### harvest
+
+<b>interface is an abstraction of behavior</b>
+
+inheritance contains <i> interface</i> and <i> partial implementation</i> the latter includes some <b>default code </b>.
+
+<br>
+
+<b>Any type in java has 2 type <i>dynamic type</i>(runtime type) and <i>static tpye</i>(declaration ype) </b>
+
+here are the definition of 3 class
+<code>public interface GenericList\<Item>
+public class Alist\<Item> implements GenericList\<Item>
+public class SLList\<Item> implements GenericList\<Item></code>
+
+Suppose we have code follows
+
+```java
+GenericList<Integer> gelAList = new AList<Integer>();
+GenericList<Integer> gelSLList = new SLList<Integer>();
+```
+
+| Reference | dynamic type | static type |
+| --------- | ------------ | ----------- |
+| gelAList  | Alist        | GenericList |
+| gelSLList | SLList       | GenericList |
+
 # project
 
 ## pro0
