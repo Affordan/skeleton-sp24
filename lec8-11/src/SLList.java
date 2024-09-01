@@ -1,6 +1,9 @@
+package src;
 import edu.princeton.cs.algs4.In;
 import net.sf.saxon.expr.ItemMapper;
 import org.apache.bcel.generic.PUSH;
+
+import java.util.ArrayList;
 
 public class SLList<Item> implements GenericList<Item> {
 
@@ -8,6 +11,7 @@ public class SLList<Item> implements GenericList<Item> {
         public Item item;
         public ItemNode next;
 
+        // insert the node always after the node p if we use p = new ItemNode(p,value);
         ItemNode(Item i, ItemNode n) {
             item = i;
             next = n;
@@ -19,8 +23,9 @@ public class SLList<Item> implements GenericList<Item> {
     private int size;
 
     public SLList(Item x) {
-        size = 0;
-        sentinel = new ItemNode(x, null);
+
+        sentinel = new ItemNode(null,null);
+        addFirst(x);
         size++;
     }
 
@@ -49,10 +54,35 @@ public class SLList<Item> implements GenericList<Item> {
     }
 
     @Override
-    public void removeLast() {
+    public Item removeLast() {
+        ItemNode back = getLastNode();
+        if (back == sentinel) return null;
+
+        size--;
+        ItemNode p = sentinel;
+        while (p.next != back) p = p.next;
+        p.next = null;    //set the lastNode of SLList to null
+        return back.item;
+
+        /* use the back directly maybe better? */
+//        else
+//        {
+//           Item value =back.item;
+//           size--;
+//           back=null;
+//           return value;
+//        }
+
+        // no because getLastNode may return sentinel
+
+    }
+
+
+    // we allow the last node can be sentinel!
+    public ItemNode getLastNode() {
         ItemNode p = sentinel;
         while (p.next != null) p = p.next;
-        p = null;
+        return p;
     }
 
     @Override
@@ -61,14 +91,13 @@ public class SLList<Item> implements GenericList<Item> {
         while (p.next != null) p = p.next;
         return p.item;
     }
+
     @Override
-    public  Item get(int i)
-    {
-        int tmpSize=0;
-        ItemNode p =sentinel;
-        while (tmpSize!=i)
-        {
-            p=p.next;
+    public Item get(int i) {
+        int tmpSize = 0;
+        ItemNode p = sentinel;
+        while (tmpSize != i) {
+            p = p.next;
             tmpSize++;
         }
         return p.item;
@@ -79,7 +108,7 @@ public class SLList<Item> implements GenericList<Item> {
 
         System.out.println("Overridden print method in SLList");
         ItemNode p = sentinel.next;
-        while (p.next != null) {
+        while (p != null) {
             System.out.print(p.item + " ");
             p = p.next;
         }
@@ -91,6 +120,32 @@ public class SLList<Item> implements GenericList<Item> {
     // We want a  faster way to get the size by cache the size while we do insert or remove
     public int size() {
         return size;
+    }
+
+    @Override
+    public void clear()
+    {
+        size=0;
+        sentinel.next=null;
+    }
+
+    // return an  ordered ArrayList of all members of List
+    public ArrayList<Item> toList()
+    {
+        ArrayList<Item> res = new ArrayList<>();
+
+        ItemNode back =getLastNode();
+        if(back==sentinel) return res;
+
+        ItemNode p =sentinel;
+
+        // we step into the list and cover every node for its item and the push to the next node.
+        while (p!=back)
+        {
+            p=p.next;
+            res.add(p.item);
+        }
+        return res;
     }
 
 //    /* Since there is no recursion in SLList. We need to create it! */

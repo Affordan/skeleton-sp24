@@ -87,7 +87,7 @@ The amazing process like this **Watch the arrow carefully**
 - doubly node (with great constructor)
 - `new LNode(sentFront, x, sentFront.next);`
 
-## lec8 inheritance and implementation
+## lec8 interface and implements
 
 ### harvest
 
@@ -115,6 +115,51 @@ GenericList<Integer> gelSLList = new SLList<Integer>();
 | --------- | ------------ | ----------- |
 | gelAList  | Alist        | GenericList |
 | gelSLList | SLList       | GenericList |
+
+## lec9 extends and supper
+
+### note
+
+- is-a and has-a
+- encapsulation
+- <b> complier is only checking based on static type</b>
+
+This lecture we build VengefulSLList and RotatingSLList.Both of them are the subclass of SLList.
+
+```java
+public class VengefulSLList<Item> extends SLList<Item>
+public class RotatingSLList<Item> extends SLList<Item>
+```
+
+is-a relationship refer to subclass before keyword of extends is a subset of superclass after keyword of extends.
+
+$$
+\begin{array}{c}
+\boxed{
+    \begin{array}{c}
+    \text{SLList} \\
+    \\
+    \boxed{\text{VengefulSLList}} \quad \boxed{\text{RotatingSLList}}
+    \end{array}
+}
+\end{array}
+$$
+
+<br>
+
+**From top to bottom ,top has bottom ,bottom is a top.**
+![](./imgs/inheritance.png)
+
+<br>
+<b> You can use super in subclass to visit private method of super class</b>
+here is a piece of code in  <code>RotatingSLList </code>
+
+```java
+  public void rotate()
+    {
+      super.addFirst(super.removeLast());
+    }
+```
 
 # project
 

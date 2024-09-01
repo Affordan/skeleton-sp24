@@ -1,4 +1,6 @@
+package Test;
 import edu.princeton.cs.algs4.In;
+import  src.*;  //import all java class of src
 
 public  class  Test
 {

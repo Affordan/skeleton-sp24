@@ -1,3 +1,4 @@
+package src;
 /*
  *  Before using this class you're suggested to read this README file
  *  * DEVELOP WHAT YOU NEED WHEN ENCOUNTERING PRO. DO NOT THINK TOO MUCH BEFORE *
@@ -47,9 +48,11 @@ public class AList<Honor>  implements GenericList<Honor>
         items = arr;
     }
 
-    public void removeLast() {
+    public Honor removeLast() {
         // we don't need to really delete the element since when using it you won't consider the missing element
+        Honor value=items[size-1];
         size--;
+        return value;
     }
 
     @Override
@@ -69,8 +72,16 @@ public class AList<Honor>  implements GenericList<Honor>
         return items[size-1];
     }
 
+    @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public void clear()
+    {
+        size=0;
+        items=(Honor[])  new Object[10];
     }
 
 }
