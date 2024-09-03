@@ -161,6 +161,23 @@ here is a piece of code in  <code>RotatingSLList </code>
     }
 ```
 
+## lec12 Asymptotic
+
+I really admire this ppt which explains $O(n),\Theta(n),\Omega(n)$ very clearly.
+![](./imgs/OrderOfGrowth.png)
+
+We have following definition.
+
+For given constant positive $c_0$ and $n$ we have function $f(n)$
+
+- O(n) $O(g(n))\quad satisfy \quad c_0\times g(n)\geq f(n)$ means greter than or equal
+- $\Omega(n)$ $\Omega(g(n))\quad satisfy \quad c_0\times g(n)\leq f(n)$means less than or equal
+- $\Theta(n)$ $\Theta(g(n))\quad satisfy \quad k_1\times g(n)\leq f(n)\leq k_2\times g(n) $ means euqal
+
+  | $f(n)$            | $O(n)$             | $\Omega(n)$               | $\Theta(n)$ | $o(n)$     |
+  | ----------------- | ------------------ | ------------------------- | ----------- | ---------- |
+  | $3n^2+4\sin(n)+5$ | $O(n^2),O(n^3)...$ | $O(n^2),O(nlogn),O(n)...$ | O(n^2)      | O(n^3),... |
+
 # project
 
 ## pro0
