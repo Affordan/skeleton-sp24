@@ -1,6 +1,6 @@
 # lab
 
-lab01: complted Arithmetic.java 14/8/2024
+lab01: completed Arithmetic.java 14/8/2024
 
 # lec
 
@@ -97,7 +97,7 @@ inheritance contains <i> interface</i> and <i> partial implementation</i> the la
 
 <br>
 
-<b>Any type in java has 2 type <i>dynamic type</i>(runtime type) and <i>static tpye</i>(declaration ype) </b>
+<b>Any type in java has 2 type <i>dynamic type</i>(runtime type) and <i>static type</i>(declaration ype) </b>
 
 here are the definition of 3 class
 <code>public interface GenericList\<Item>
@@ -163,6 +163,8 @@ here is a piece of code in  <code>RotatingSLList </code>
 
 ## lec12 Asymptotic
 
+### note
+
 I really admire this ppt which explains $O(n),\Theta(n),\Omega(n)$ very clearly.
 ![](./imgs/OrderOfGrowth.png)
 
@@ -177,6 +179,45 @@ For given constant positive $c_0$ and $n$ we have function $f(n)$
   | $f(n)$            | $O(n)$             | $\Omega(n)$               | $\Theta(n)$ | $o(n)$     |
   | ----------------- | ------------------ | ------------------------- | ----------- | ---------- |
   | $3n^2+4\sin(n)+5$ | $O(n^2),O(n^3)...$ | $O(n^2),O(nlogn),O(n)...$ | O(n^2)      | O(n^3),... |
+
+## harvest
+
+Actually we use asymptotic to measure our program mathematically not by run it practically the worst idea to test its whatever things!
+
+## lec13 Disjoint Sets
+
+Let's see a definition of sets
+![](./imgs/sets.png)
+disjoint sets is a series sets that can check whether 2 elements is connected or connect 2 elements (their sets will be connected too.)
+
+```java
+public interface DisjointSets<T>
+{
+    void connect(T x ,T y);
+    boolean isConnected(T x,T y);
+}
+```
+
+\
+we'll introduce 3 method to complete the data structure.ListOfSetsDS seems our head of this idea so we just mention it.
+The idea that using an array to store the sets and make elements of a set to be the same value in the array. **great idea to check whether 2 elements belongs to one set**
+
+QuickUnionDS emmmm ,maybe something like tree
+|value|-1|0|6|0|3|3|-1|6|-1|
+|------|------|------|------|------|------|------|------|------|------|
+|index|0|1|2|3|4|5|6|7|8|
+
+
+In the tree or this array,one item is either a single node(value = -1) or a 
+tree node( root node or common node doesn't matter).If this node is a single node we call `mount` to hanging the node under the tree,if tree node
+we call  `merge` to merge 2 trees according to its weight.The question is how do we merge 2 trees?Call `root` find the root node of the tree then merge it become so easy. **don't forget update the root value(size of the tree)** 
+
+\
+It seemns that `mount` method  is dull so we give it up.
+
+
+
+![](<./imgs/[61B%20SP24]%20Lecture%2014%20-%20Data%20Structures%201_%20Disjoint%20Sets%20(1).png>)
 
 # project
 
