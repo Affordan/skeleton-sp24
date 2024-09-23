@@ -31,12 +31,13 @@ public class ArrayDeque61B61BTest {
     @Test
     @DisplayName("Convert deque to list with more elements")
     void ArrayDequeToListWithFullElements() {
-        ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
-        List<Integer> li = Arrays.asList(5, 6, 7, 8, 0, 5, 4, 3);
+       ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
+
+         /*  1 2 3 4 5 6 7 8 9 10 */
+         /*  5 6 7 7 8 0 0 5 4 3 */
         adeque.addLast(8);
         adeque.addFirst(7);
         adeque.addLast(0);
-        ;
         adeque.addLast(0);
         adeque.addLast(5);
         adeque.addFirst(7);
@@ -44,11 +45,14 @@ public class ArrayDeque61B61BTest {
         adeque.addFirst(5);
         adeque.addLast(4);
         adeque.addLast(3);
+
+        List<Integer> li =Arrays.asList( 5 ,6, 7, 7, 8, 0, 0, 5, 4, 3);
+
         assertThat(adeque.toList()).isEqualTo(li);
 
     }
 
-    @Test
+
     @DisplayName("addLast but elements over the end bound.")
     void addLastElementsOutOfSize() {
         ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
@@ -78,4 +82,75 @@ public class ArrayDeque61B61BTest {
         adeque.addLast(3);
         assertThat(adeque.getCapacity()).isEqualTo(16);
     }
+
+    @Test
+    @DisplayName("testOfGetElementsFromDeque")
+    void testGetElements()
+    {
+         ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
+
+         /*  1 2 3 4 5 6 7 8 9 10 */
+         /*  5 6 7 7 8 0 0 5 4 3 */
+        adeque.addLast(8);
+        adeque.addFirst(7);
+        adeque.addLast(0);
+        adeque.addLast(0);
+        adeque.addLast(5);
+        adeque.addFirst(7);
+        adeque.addFirst(6);
+        adeque.addFirst(5);
+        adeque.addLast(4);
+        adeque.addLast(3);
+        assertThat(adeque.get(5)).isEqualTo(8);
+        assertThat(adeque.get(1)).isEqualTo(5);
+        assertThat(adeque.get(10)).isEqualTo(3);
+
+    }
+
+    @Test
+    @DisplayName("testRemoveFirstFromDeque")
+    void testRemoveFirst()
+    {
+          ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
+
+         /*  1 2 3 4 5 6 7 8 9 10 */
+         /*  5 6 7 7 8 0 0 5 4 3 */
+        adeque.addLast(8);
+        adeque.addFirst(7);
+        adeque.addLast(0);
+        adeque.addLast(0);
+        adeque.addLast(5);
+        adeque.addFirst(7);
+        adeque.addFirst(6);
+        adeque.addFirst(5);
+        adeque.addLast(4);
+        adeque.addLast(3);
+        assertThat(adeque.removeFirst()).isEqualTo(5);
+        assertThat(adeque.size()).isEqualTo(9);
+    }
+
+    @Test
+    @DisplayName("testRemoveLastFromDeque")
+    void testRemoveLast()
+    {
+          ArrayDeque61B<Integer> adeque = new ArrayDeque61B<>();
+
+         /*  1 2 3 4 5 6 7 8 9 10 */
+         /*  5 6 7 7 8 0 0 5 4 3 */
+        adeque.addLast(8);
+        adeque.addFirst(7);
+        adeque.addLast(0);
+        adeque.addLast(0);
+        adeque.addLast(5);
+        adeque.addFirst(7);
+        adeque.addFirst(6);
+        adeque.addFirst(5);
+        adeque.addLast(4);
+        adeque.addLast(3);
+        assertThat(adeque.removeLast()).isEqualTo(3);
+        assertThat(adeque.size()).isEqualTo(9);
+    }
+
+
+
 }

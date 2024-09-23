@@ -1,3 +1,7 @@
+import com.google.common.truth.Truth;
+import net.sf.saxon.expr.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math.*;
 
@@ -54,8 +58,15 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public List<T> toList() {
-
-        return List.of();
+        List<T> li = new ArrayList<>();
+        int tmp=head;
+        while(true)
+        {
+            tmp = Math.floorMod(tmp+1,capacity);
+            if(tmp==tail) break;
+            li.add(items[tmp]);
+        }
+        return li;
     }
 
     /**
@@ -94,6 +105,8 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
         T[] newItems = (T[]) new Object[newCapacity];
 
         int tmp = middle - 1;
+
+        /* iterate from middle to head*/
         while (tmp != head) {
             newItems[newHead] = items[tmp];
             tmp = Math.floorMod(tmp - 1, capacity);
@@ -103,7 +116,7 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
             newHead = Math.floorMod(newHead - 1, newCapacity);
 
         }
-
+        /* iterate from middle to tail*/
         tmp = middle;
         while (tmp != tail) {
             newItems[newTail] = items[tmp];
@@ -142,7 +155,12 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T removeFirst() {
-        return null;
+        head=Math.floorMod(head+1,capacity);
+       T res=items[head];
+        items[head]=null;
+        size_--;
+
+        return res;
     }
 
     /**
@@ -152,7 +170,12 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T removeLast() {
-        return null;
+        tail= Math.floorMod(tail-1,capacity);
+        T res=items[tail];
+        items[tail]=null;
+        size_--;
+
+        return res;
     }
 
     /**
@@ -166,7 +189,13 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        int tmp=head;
+       for(int i=0;i<index;i++)
+       {
+           tmp=Math.floorMod(tmp+1,capacity);
+       }
+
+        return items[tmp];
     }
 
     /**
