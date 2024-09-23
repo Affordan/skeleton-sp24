@@ -2,6 +2,7 @@
 
 lab01: completed Arithmetic.java 14/8/2024
 
+
 # lec
 
 ## lec4 SLList:
@@ -219,9 +220,17 @@ It seemns that `mount` method  is dull so we give it up.
 
 ![](<./imgs/[61B%20SP24]%20Lecture%2014%20-%20Data%20Structures%201_%20Disjoint%20Sets%20(1).png>)
 
+
+
+
 # project
 
 ## pro0
 
 The idea of moving one single tile and then a column then the whole board is great. And the most powerful idea is using `setViewingPerspective` method to control.Show my game.
 ![](./imgs/game2048.gif)
+
+## pro1A LinkedListDeque
+
+>A common beginner mistake is to write a large amount of code and hope that it all works once you’re finished. 
+
